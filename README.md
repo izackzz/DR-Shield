@@ -1,110 +1,110 @@
-Excelente\! Com base na sua descrição e nas funcionalidades que implementamos, preparei um `README.md` completo e persuasivo, focado no seu público-alvo.
+# DR-Shield
 
-Ele explica o que o script faz, como a nova função de "crash" funciona e guia o usuário passo a passo na personalização.
+DR-Shield é um script de proteção em JavaScript para ofertas digitais.  
+Ele atua bloqueando extensões conhecidas de espionagem, detectando abertura de DevTools e, opcionalmente, invalidando versões clonadas da página.
 
------
+---
 
-# DR-Shield: O Escudo Definitivo para Sua Oferta
+## Funcionalidades
 
-Cansado de ter sua VSL, sua copy e sua oferta clonadas por "ratos" de mercado? O DR-Shield é a sua linha de frente na proteção de ativos digitais.
+- Detecção de DevTools abertos.
+- Bloqueio de extensões como Allow Copy, AdBlock, Automa, etc.
+- Substituição de links em páginas clonadas.
+- Redirecionamento ou travamento de aba ao detectar espionagem.
+- Compatível com adição de Canary Tokens para monitoramento.
 
-Isso **não é um cloacker**. É um poderoso plugin em JavaScript projetado para blindar sua página contra espiões e clonadores, tornando a vida deles extremamente difícil. Com o DR-Shield, você protege o suor do seu trabalho e garante que seus leads e suas vendas não sejam desviados.
+---
 
-## Funcionalidades Principais
+## Instalação
 
-  * **🛡️ Bloqueio de Extensões Espiãs**: Detecta e neutraliza automaticamente as extensões mais comuns usadas para espionagem e clonagem. Isso inclui mais de uma dúzia de ferramentas como "Allow Copy", que tentam habilitar o menu de contexto para inspecionar seu código.
+### 1. Adicione a lib base no `<head>`:
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
+````
 
-  * **🚫 Anti-Clonagem Inteligente**: Bloqueia diversas extensões usadas por clonadores para baixar VSLs, acelerar vídeos, inspecionar elementos da página e extrair seu funil.
+### 2. Adicione o DR-Shield no final do `<body>`:
 
-  * **💥 Dupla Reação Contra Invasores**: Você escolhe como o script reage à abertura do DevTools ou à detecção de uma extensão maliciosa:
-
-      * **Modo Sutil (`crashPage = false`)**: Fecha a página instantaneamente ou redireciona o intruso para uma "white page", expulsando-o do seu site.
-      * **Modo Agressivo (`crashPage = true`)**: **A novidade.** Sobrecarrega o processador do invasor, consumindo 100% da CPU e travando completamente a aba do navegador dele. A página se torna inutilizável, frustrando qualquer tentativa de análise.
-
-  * **🎣 Sistema Anti-Clone com Isca**: Se um clonador conseguir colocar uma cópia da sua página no ar, o DR-Shield age nos bastidores. Ele aguarda o momento do pitch da VSL e, silenciosamente, substitui **todos os links da página clonada** pelo seu link de checkout. O clonador paga pelo tráfego, e você fica com os leads e as vendas.
-
-  * **🕵️ Monitoramento com Canary Tokens**: O script foi projetado para facilitar a adição de Canary Tokens (preferencialmente no CSS), permitindo que você seja notificado caso alguém consiga clonar seus arquivos.
-
-A combinação dessas camadas de segurança torna a clonagem da sua oferta um trabalho árduo e muitas vezes inviável até para programadores experientes.
-
-## Instalação e Configuração
-
-A implementação é simples. Siga os 3 passos abaixo.
-
-### Passo 1: Adicione o Detector na sua Página
-
-Primeiro, adicione a biblioteca `devtools-detector` no topo da tag `<head>` do seu arquivo HTML. Ela é a base que permite a detecção de ameaças.
-
-Você pode usar a versão via CDN (recomendado e mais fácil):
+Recomendado via CDN oficial, ou com nome do script alterado dentro do seu próprio servidor para dificil identificação:
 
 ```html
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
-    </head>
+<script src="https://cdn.jsdelivr.net/gh/izackzz/DR-Shield@v1.0.1/dr-shield.min.js"></script>
 ```
 
-Ou, se preferir, pode baixar o arquivo `dev-detect.min.js` e hospedá-lo no seu próprio servidor.
+---
 
-### Passo 2: Adicione e Personalize o DR-Shield
+## Configuração
 
-Agora, copie o código abaixo e cole-o no final do seu arquivo HTML, logo antes de fechar a tag `</body>`.
+Para uso, defina as seguintes variáveis em uma tag "<script></script>" antes da importação da ferramenta, (obviamente com js ofuscado):
 
-```html
-<script>
-    // ===================== CONFIGURAÇÕES =====================
+```js
+    const crashPage = false;
 
-    // Defina como 'true' para travar a página ao detectar ameaças.
-    // Se 'false', usará o método tradicional de redirecionamento/fechamento.
-    const crashPage = true; 
-
-    // Lista de extensões bloqueadas (IDs). Adicione novos IDs aqui.
+    // Adicione aqui os IDs de extensões que você quer bloquear.
     const blockedExtensions = [
-        // - ALLOW COPY E SEMELHANTES
-        "aefehdhdciieocakfobpaaolhipkcpgc",
-        "lamaakaemgdclpnfbofmhpkanfnojjch",
-        //- ROUBAR VSL
-        "ajplclfainbnjaedmaijgkpdhgmlfihj",
-        //- ADBLOCK
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm",
-        //- AUTOMA
-        "infppggnoaenmfagbfknfkancpbljcca"
+      // - ALLOW COPY E SEMELHANTES
+      "aefehdhdciieocakfobpaaolhipkcpgc",
+      "lamaakaemgdclpnfbofmhpkanfnojjch",
+      "mmpljcghnbpkokhbkmfdmoagllopfmlm",
+      "onepmapfbjohnegdmfhndpefjkppbjkm",
+      "imblndhbdddibjabnddopiehagbkipkj",
+      "mlloloooolpffjkjaclpfpeednngpjon",
+      "fpjppnhnpnknbenelmbnidjbolhandnf",
+      "nahkcohcfljjjkhdcbfdphegdoiflbjd",
+      "ehfmpjdcdldhefieelihdobnjfpalhic",
+      "moomnncijchljipbmkiblfbaaldinhde",
+      "ajhbdcgfhlhhmocddefknjjkejcfpbnj",
+      "jhodmcfehicjonjdoljadkbkenaoehfm",
+      "gbjocelfmcapnmcocncmheabfhdhmadl",
+      "mbjgbabnndiapebkfoenicelmacgabep",
+      "igbahmkffbagkepelepkldjiknhbklga",
+      "lljjoinbdnpeicjceklabpahjgcmjbbg",
+      "plnlliclnceednefeebkgflnmlchdmcf",
+      //- ROUBAR VSL
+      "ajplclfainbnjaedmaijgkpdhgmlfihj",
+      "iogidnfllpdhagebkblkgbfijkbkjdmm",
+      "ekhbcipncbkfpkaianbjbcbmfehjflpf",
+      "ghiehahinoheonempcikofhlhnbpnhga",
+      "",
+      //- ADBLOCK
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm",
+      //- SPY
+      "ppbmlcfgohokdanfpeoanjcdclffjncg",
+      "gppongmhjkpfnbhagpmjfkannfbllamg",
+      "",
+      //- COOKIE
+      "hlkenndednhfkekhgcdicdfddnkalmdm",
+      //- HACKERS
+      "cmbndhnoonmghfofefkcccljbkdpamhi",
+      "ginpbkfigcoaokgflihfhhmglmbchinc",
+      "ngpampappnmepgilojfohadhhmbhlaek",
+      "fahollcgofmpnehocdgofnhkkchiekoo",
+      //- USER AGENT
+      "einpaelgookohagofgnnkcfjbkkgepnp",
+      //- CONTROLADOR DE VELOCIDADE
+      "nkkhljadiejecbgelalchmjncoilpnlk",
+      //- PIXEL HELPER
+      "fdgfkebogiimcoedlicjlajpkdmockpc",
+      //- AUTOMA
+      "infppggnoaenmfagbfknfkancpbljcca",
+
+      // Adicione mais IDs de extensões aqui
     ];
-
-    // URL para redirecionamento (usado apenas se crashPage = false)
-    const redirectURL = "SUA-WHITE-PAGE.html";
-
-    // Domínio original da sua oferta para o sistema anti-clone
-    const baseDomain = "seusite.com";
-
-    // Link do SEU checkout (para roubar os leads do clonador)
-    const antiCloneDomain = "https://seulinkdecheckout.com";
-
-    // Tempo em milissegundos antes de substituir os links (padrão: 5 minutos)
+    const redirectURL = "https://google.com";
+    const baseDomain = "seu-dominio.com";
+    const antiCloneDomain = "https://seu-checkout.com/oferta-xyz";
     const timeBeforeReplace = 5 * 60 * 1000;
-
-    // ===================== (O restante do código-fonte do DR-Shield) =====================
-    // ... (O código das funções que colamos na resposta anterior vai aqui) ...
-
-</script>
 ```
 
-### Passo 3: Personalizando o Script
+---
 
-Use como exemplo o arquivo `SHIELD-OFFER.html`;
-A personalização é feita diretamente nas variáveis de configuração:
+## Recomendações
 
-  * `crashPage`: A escolha principal. `true` para travar o navegador do invasor, `false` para apenas redirecioná-lo.
-  * `blockedExtensions`: Para adicionar novas extensões à lista, você precisa do ID delas.
-      * **Como encontrar o ID de uma extensão?** Vá para a página da extensão na Chrome Web Store. A URL será algo como: `chrome.google.com/webstore/detail/nome-da-extensao/aefehdhdciieocakfobpaaolhipkcpgc`. O ID é essa sequência final de letras (`aefehdhdciieocakfobpaaolhipkcpgc`).
-  * `redirectURL`: O link da sua "página branca" ou de um advertorial, para onde o curioso será enviado caso `crashPage` seja `false`.
-  * `baseDomain`: O domínio **exato** da sua oferta original, sem `www` ou `https://`. Ex: `seusite.com`.
-  * `antiCloneDomain`: O seu link de checkout (pode ser encurtado) que será usado para substituir os links na página clonada.
+* Obfusque o script final para dificultar engenharia reversa.
+* Atualize a lista de `blockedExtensions` conforme necessidade.
+* Utilize monitoramento adicional se necessário (como Canary Tokens via CSS).
 
-### Dica de Ouro: Ofuscação
+---
 
-Após personalizar tudo, é altamente recomendável que você **ofusque** o conteúdo do script. Isso transforma o código em uma versão ilegível, dificultando ainda mais a análise por parte de quem tentar inspecionar sua página.
-Você pode usar ferramentas online gratuitas para isso, como o "JavaScript Obfuscator".
+Quer trocar ideia, sugerir melhorias ou relatar bug? Fale comigo no TG: [@yMusashi](https://t.me/yMusashi)
 
-## Contato
-
-Para dúvidas, networking ou sugestões, entre em contato com o desenvolvedor via Telegram: [@Prometheust](https://t.me/Prometheust).
+---
