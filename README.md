@@ -1,76 +1,110 @@
-# DR-Shield: Proteção Avançada para Suas Páginas Web
+Excelente\! Com base na sua descrição e nas funcionalidades que implementamos, preparei um `README.md` completo e persuasivo, focado no seu público-alvo.
 
-O DR-Shield é um script de segurança robusto projetado para proteger suas páginas da web contra uma variedade de ameaças, incluindo a abertura do DevTools, o uso de extensões maliciosas, a cópia de conteúdo e a clonagem de páginas. Com uma configuração flexível e múltiplas camadas de defesa, o DR-Shield é uma ferramenta essencial para proteger seus ativos digitais.
+Ele explica o que o script faz, como a nova função de "crash" funciona e guia o usuário passo a passo na personalização.
+
+-----
+
+# DR-Shield: O Escudo Definitivo para Sua Oferta
+
+Cansado de ter sua VSL, sua copy e sua oferta clonadas por "ratos" de mercado? O DR-Shield é a sua linha de frente na proteção de ativos digitais.
+
+Isso **não é um cloacker**. É um poderoso plugin em JavaScript projetado para blindar sua página contra espiões e clonadores, tornando a vida deles extremamente difícil. Com o DR-Shield, você protege o suor do seu trabalho e garante que seus leads e suas vendas não sejam desviados.
 
 ## Funcionalidades Principais
 
-  * **Bloqueio de DevTools**: Detecta a abertura das ferramentas de desenvolvedor (DevTools) no navegador. Ao ser detectado, o script pode fechar a aba ou redirecionar o usuário para uma página de sua escolha, dificultando a inspeção do código-fonte.
-  * **Bloqueio de Extensões**: Permite o bloqueio de extensões específicas do navegador com base em seus IDs. Isso é útil para neutralizar ferramentas de cópia, bloqueadores de anúncios e outras extensões que possam interferir no funcionamento da sua página.
-  * **Proteção Anti-Cópia**: Desabilita a seleção de texto, o clique com o botão direito do mouse e diversos atalhos de teclado comumente usados para copiar conteúdo (como Ctrl+C, Ctrl+U, F5).
-  * **Sistema Anti-Clone**: Verifica se a sua página está sendo executada no domínio original. Se um domínio diferente for detectado, o script pode substituir todos os links da página por um link de sua escolha após um tempo determinado, protegendo contra a clonagem de páginas e o roubo de leads.
-  * **Monitoramento de Scripts Injetados**: Utiliza um `MutationObserver` para monitorar e remover scripts que são injetados no DOM por extensões maliciosas, garantindo maior segurança para sua página.
+  * **🛡️ Bloqueio de Extensões Espiãs**: Detecta e neutraliza automaticamente as extensões mais comuns usadas para espionagem e clonagem. Isso inclui mais de uma dúzia de ferramentas como "Allow Copy", que tentam habilitar o menu de contexto para inspecionar seu código.
 
-## Configuração
+  * **🚫 Anti-Clonagem Inteligente**: Bloqueia diversas extensões usadas por clonadores para baixar VSLs, acelerar vídeos, inspecionar elementos da página e extrair seu funil.
 
-A personalização do DR-Shield é feita diretamente no código-fonte, através da alteração de variáveis de configuração.
+  * **💥 Dupla Reação Contra Invasores**: Você escolhe como o script reage à abertura do DevTools ou à detecção de uma extensão maliciosa:
 
-```javascript
-// ===================== CONFIGURAÇÕES =====================
+      * **Modo Sutil (`crashPage = false`)**: Fecha a página instantaneamente ou redireciona o intruso para uma "white page", expulsando-o do seu site.
+      * **Modo Agressivo (`crashPage = true`)**: **A novidade.** Sobrecarrega o processador do invasor, consumindo 100% da CPU e travando completamente a aba do navegador dele. A página se torna inutilizável, frustrando qualquer tentativa de análise.
 
-// Lista de extensões bloqueadas (IDs)
-const blockedExtensions = [
-    // - ALLOW COPY E SEMELHANTES
-    "aefehdhdciieocakfobpaaolhipkcpgc",
-    "lamaakaemgdclpnfbofmhpkanfnojjch",
-    //- ROUBAR VSL
-    "ajplclfainbnjaedmaijgkpdhgmlfihj",
-    "iogidnfllpdhagebkblkgbfijkbkjdmm",
-    //- ADBLOCK
-    "cjpalhdlnbpafiamejdnhcphjbkeiagm",
-    // Adicione mais IDs de extensões aqui
-];
+  * **🎣 Sistema Anti-Clone com Isca**: Se um clonador conseguir colocar uma cópia da sua página no ar, o DR-Shield age nos bastidores. Ele aguarda o momento do pitch da VSL e, silenciosamente, substitui **todos os links da página clonada** pelo seu link de checkout. O clonador paga pelo tráfego, e você fica com os leads e as vendas.
 
-// URL para redirecionamento quando DevTools é detectado
-const redirectURL = "WHITE-PAGE.html"; // Substitua pela URL desejada
+  * **🕵️ Monitoramento com Canary Tokens**: O script foi projetado para facilitar a adição de Canary Tokens (preferencialmente no CSS), permitindo que você seja notificado caso alguém consiga clonar seus arquivos.
 
-// URL base que será usada para comparação
-const baseDomain = "DOMINIO-DA-SUA-OFERTA-ORIGINAL-QUE-SERÁ-USADO-PARA-COMPARAÇÃO"; // Substitua pelo domínio base
+A combinação dessas camadas de segurança torna a clonagem da sua oferta um trabalho árduo e muitas vezes inviável até para programadores experientes.
 
-// URL para substituir todos os links após o tempo definido
-const antiCloneDomain = "SEU-CHECKOUT-ENCURTADO-PARA-ROUBAR-LEADS-DO-CLONADOR"; //anti-clone
+## Instalação e Configuração
 
-// Tempo em milissegundos antes de substituir os links (5 minutos)
-const timeBeforeReplace = 5 * 60 * 1000; // 5 minutos em milissegundos
+A implementação é simples. Siga os 3 passos abaixo.
+
+### Passo 1: Adicione o Detector na sua Página
+
+Primeiro, adicione a biblioteca `devtools-detector` no topo da tag `<head>` do seu arquivo HTML. Ela é a base que permite a detecção de ameaças.
+
+Você pode usar a versão via CDN (recomendado e mais fácil):
+
+```html
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
+    </head>
 ```
 
-## Instalação e Uso
+Ou, se preferir, pode baixar o arquivo `dev-detect.min.js` e hospedá-lo no seu próprio servidor.
 
-Para implementar o DR-Shield em sua página, siga os passos abaixo:
+### Passo 2: Adicione e Personalize o DR-Shield
 
-1.  **Adicione o Detector de DevTools**: Insira o script do `devtools-detector` no topo da tag `<head>` do seu HTML. Você pode usar a versão hospedada ou o arquivo `dev-detect.min.js` localmente.
+Agora, copie o código abaixo e cole-o no final do seu arquivo HTML, logo antes de fechar a tag `</body>`.
 
-    ```html
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
+```html
+<script>
+    // ===================== CONFIGURAÇÕES =====================
 
-    <script src="dev-detect.min.js"></script>
-    ```
+    // Defina como 'true' para travar a página ao detectar ameaças.
+    // Se 'false', usará o método tradicional de redirecionamento/fechamento.
+    const crashPage = true; 
 
-2.  **Personalize o Script Principal**: Configure as variáveis (`blockedExtensions`, `redirectURL`, `baseDomain`, etc.) no script principal para atender às suas necessidades.
+    // Lista de extensões bloqueadas (IDs). Adicione novos IDs aqui.
+    const blockedExtensions = [
+        // - ALLOW COPY E SEMELHANTES
+        "aefehdhdciieocakfobpaaolhipkcpgc",
+        "lamaakaemgdclpnfbofmhpkanfnojjch",
+        //- ROUBAR VSL
+        "ajplclfainbnjaedmaijgkpdhgmlfihj",
+        //- ADBLOCK
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm",
+        //- AUTOMA
+        "infppggnoaenmfagbfknfkancpbljcca"
+    ];
 
-3.  **Ofusque o Script**: Para dificultar a análise do seu código, é altamente recomendável que você ofusque o conteúdo do script principal.
+    // URL para redirecionamento (usado apenas se crashPage = false)
+    const redirectURL = "SUA-WHITE-PAGE.html";
 
-4.  **Organize e Adicione o Script ao seu HTML**: Salve o script ofuscado em uma estrutura de pastas que dificulte sua detecção. Por exemplo: `pages/wp-content/plugins/native-config/elementor-network/assets/js/elementor-8213497xEgn-config.js`.
+    // Domínio original da sua oferta para o sistema anti-clone
+    const baseDomain = "seusite.com";
 
-5.  **Adicione o Script ao Corpo do HTML**: Inclua o seu script ofuscado no final da tag `<body>` do seu arquivo HTML.
+    // Link do SEU checkout (para roubar os leads do clonador)
+    const antiCloneDomain = "https://seulinkdecheckout.com";
 
-    ```html
-    <script src="./pages/wp-content/plugins/native-config/elementor-network/assets/js/elementor-8213497xEgn-config.js"></script>
-    ```
+    // Tempo em milissegundos antes de substituir os links (padrão: 5 minutos)
+    const timeBeforeReplace = 5 * 60 * 1000;
 
-## Recomendações de Segurança Adicionais
+    // ===================== (O restante do código-fonte do DR-Shield) =====================
+    // ... (O código das funções que colamos na resposta anterior vai aqui) ...
 
-  * **Canary Tokens**: Para um nível extra de segurança e monitoramento, considere o uso de Canary Tokens em seu CSS. Isso pode ajudar a detectar se alguém está tentando copiar ou analisar seus arquivos.
+</script>
+```
+
+### Passo 3: Personalizando o Script
+
+Use como exemplo o arquivo `SHIELD-OFFER.html`;
+A personalização é feita diretamente nas variáveis de configuração:
+
+  * `crashPage`: A escolha principal. `true` para travar o navegador do invasor, `false` para apenas redirecioná-lo.
+  * `blockedExtensions`: Para adicionar novas extensões à lista, você precisa do ID delas.
+      * **Como encontrar o ID de uma extensão?** Vá para a página da extensão na Chrome Web Store. A URL será algo como: `chrome.google.com/webstore/detail/nome-da-extensao/aefehdhdciieocakfobpaaolhipkcpgc`. O ID é essa sequência final de letras (`aefehdhdciieocakfobpaaolhipkcpgc`).
+  * `redirectURL`: O link da sua "página branca" ou de um advertorial, para onde o curioso será enviado caso `crashPage` seja `false`.
+  * `baseDomain`: O domínio **exato** da sua oferta original, sem `www` ou `https://`. Ex: `seusite.com`.
+  * `antiCloneDomain`: O seu link de checkout (pode ser encurtado) que será usado para substituir os links na página clonada.
+
+### Dica de Ouro: Ofuscação
+
+Após personalizar tudo, é altamente recomendável que você **ofusque** o conteúdo do script. Isso transforma o código em uma versão ilegível, dificultando ainda mais a análise por parte de quem tentar inspecionar sua página.
+Você pode usar ferramentas online gratuitas para isso, como o "JavaScript Obfuscator".
 
 ## Contato
 
-Para dúvidas, sugestões ou para trocar ideias sobre o script, entre em contato com o desenvolvedor através do Telegram: [@Prometheust](https://t.me/Prometheust).
+Para dúvidas, networking ou sugestões, entre em contato com o desenvolvedor via Telegram: [@Prometheust](https://t.me/Prometheust).

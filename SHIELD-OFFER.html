@@ -1,266 +1,76 @@
-
-<!-- USE O VS CODE, FICARÁ MUITO MAIS FÁCIL DE EDITAR: https://code.visualstudio.com/Download-->
-
-
-<div>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
+</head>
+<body>
+    <div>
     <h1> Isso não é para ser aberto no navegador, use o VS Code,<br> ficará muito mais fácil de editar: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a> </h1>
     <h3> Caso use ou tenha alguma dúvida, me chama no tg pra gente trocar uma ideia <a href="https://t.me/Prometheust">@Prometheust</a></h3>
     <h3> Esse script foi disponibilizado apenas dentro do Glory, caso não esteja ainda, entre: <a href="https://t.me/+AgwSAr8r81pkZGUx">𝐏𝐀𝐓𝐇 𝐎𝐅 𝐆𝐋𝐎𝐑𝐘 ️️𓅂</a></h3>
 <div>
+  <h1>Meu Título Incrível</h1>
+  <p>Minha VSL e copy aqui...</p>
+  <a href="https://example.com">Comprar Agora</a>
 
-        <!-- 1º: BLOQUEADOR DE DEV TOOLS NA SUA <head>, + CONFIG PARA REDIRECT no fim da sua <body>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
-<!-- OU USE COM O SCRIPT NO SEU SERVIDOR -->
-<script src="dev-detect.min.js"></script>
+  <script>
+    // ================== CONFIGURAÇÃO DO DR-SHIELD ==================
 
-        <!-- 2º: Suba um arquivo OFUSCADO e link ao seu <body>-->
-<script>
-    // ===================== CONFIGURAÇÕES =====================
+    // true = trava a página do invasor; false = apenas redireciona/fecha.
+    const crashPage = false;
 
-    // Lista de extensões bloqueadas (IDs)
+    // Adicione aqui os IDs de extensões que você quer bloquear.
     const blockedExtensions = [
-        // - ALLOW COPY E SEMELHANTES
-        "aefehdhdciieocakfobpaaolhipkcpgc",
-        "lamaakaemgdclpnfbofmhpkanfnojjch",
-        "mmpljcghnbpkokhbkmfdmoagllopfmlm",
-        "onepmapfbjohnegdmfhndpefjkppbjkm",
-        "imblndhbdddibjabnddopiehagbkipkj",
-        "mlloloooolpffjkjaclpfpeednngpjon",
-        "fpjppnhnpnknbenelmbnidjbolhandnf",
-        "nahkcohcfljjjkhdcbfdphegdoiflbjd",
-        "ehfmpjdcdldhefieelihdobnjfpalhic",
-        "moomnncijchljipbmkiblfbaaldinhde",
-        "ajhbdcgfhlhhmocddefknjjkejcfpbnj",
-        "jhodmcfehicjonjdoljadkbkenaoehfm",
-        "gbjocelfmcapnmcocncmheabfhdhmadl",
-        "mbjgbabnndiapebkfoenicelmacgabep",
-        "igbahmkffbagkepelepkldjiknhbklga",
-        "lljjoinbdnpeicjceklabpahjgcmjbbg",
-        "plnlliclnceednefeebkgflnmlchdmcf",
-        "aefehdhdciieocakfobpaaolhipkcpgc",
-        //- ROUBAR VSL
-        "ajplclfainbnjaedmaijgkpdhgmlfihj",
-        "iogidnfllpdhagebkblkgbfijkbkjdmm",
-        "ekhbcipncbkfpkaianbjbcbmfehjflpf",
-        "ghiehahinoheonempcikofhlhnbpnhga",
-        "",
-        //- ADBLOCK
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm",
-        //- SPY
-        "ppbmlcfgohokdanfpeoanjcdclffjncg",
-        "gppongmhjkpfnbhagpmjfkannfbllamg",
-        "",
-        //- COOKIE
-        "hlkenndednhfkekhgcdicdfddnkalmdm",
-        //- HACKERS
-        "cmbndhnoonmghfofefkcccljbkdpamhi",
-        "ginpbkfigcoaokgflihfhhmglmbchinc",
-        "ngpampappnmepgilojfohadhhmbhlaek",
-        "fahollcgofmpnehocdgofnhkkchiekoo",
-        "",
-        //- USER AGENT
-        "einpaelgookohagofgnnkcfjbkkgepnp",
-        "",
-        //- CONTROLADOR DE VELOCIDADE
-        "nkkhljadiejecbgelalchmjncoilpnlk",
-        //- PIXEL HELPER
-        "fdgfkebogiimcoedlicjlajpkdmockpc",
-        "",
-        //- AUTOMA
-        "infppggnoaenmfagbfknfkancpbljcca"
+      // - ALLOW COPY E SEMELHANTES
+      "aefehdhdciieocakfobpaaolhipkcpgc",
+      "lamaakaemgdclpnfbofmhpkanfnojjch",
+      "mmpljcghnbpkokhbkmfdmoagllopfmlm",
+      "onepmapfbjohnegdmfhndpefjkppbjkm",
+      "imblndhbdddibjabnddopiehagbkipkj",
+      "mlloloooolpffjkjaclpfpeednngpjon",
+      "fpjppnhnpnknbenelmbnidjbolhandnf",
+      "nahkcohcfljjjkhdcbfdphegdoiflbjd",
+      "ehfmpjdcdldhefieelihdobnjfpalhic",
+      "moomnncijchljipbmkiblfbaaldinhde",
+      "ajhbdcgfhlhhmocddefknjjkejcfpbnj",
+      "jhodmcfehicjonjdoljadkbkenaoehfm",
+      "gbjocelfmcapnmcocncmheabfhdhmadl",
+      "mbjgbabnndiapebkfoenicelmacgabep",
+      "igbahmkffbagkepelepkldjiknhbklga",
+      "lljjoinbdnpeicjceklabpahjgcmjbbg",
+      "plnlliclnceednefeebkgflnmlchdmcf",
+      //- ROUBAR VSL
+      "ajplclfainbnjaedmaijgkpdhgmlfihj",
+      "iogidnfllpdhagebkblkgbfijkbkjdmm",
+      "ekhbcipncbkfpkaianbjbcbmfehjflpf",
+      "ghiehahinoheonempcikofhlhnbpnhga",
+      "",
+      //- ADBLOCK
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm",
+      //- SPY
+      "ppbmlcfgohokdanfpeoanjcdclffjncg",
+      "gppongmhjkpfnbhagpmjfkannfbllamg",
+      "",
+      //- COOKIE
+      "hlkenndednhfkekhgcdicdfddnkalmdm",
+      //- HACKERS
+      "cmbndhnoonmghfofefkcccljbkdpamhi",
+      "ginpbkfigcoaokgflihfhhmglmbchinc",
+      "ngpampappnmepgilojfohadhhmbhlaek",
+      "fahollcgofmpnehocdgofnhkkchiekoo",
+      //- USER AGENT
+      "einpaelgookohagofgnnkcfjbkkgepnp",
+      //- CONTROLADOR DE VELOCIDADE
+      "nkkhljadiejecbgelalchmjncoilpnlk",
+      //- PIXEL HELPER
+      "fdgfkebogiimcoedlicjlajpkdmockpc",
+      //- AUTOMA
+      "infppggnoaenmfagbfknfkancpbljcca",
 
-        // Adicione mais IDs de extensões aqui
+      // Adicione mais IDs de extensões aqui
     ];
-
-    // URL para redirecionamento quando DevTools é detectado
-    const redirectURL = "WHITE-PAGE.html"; // Substitua pela URL desejada
-
-    // URL base que será usada para comparação
-    const baseDomain = "DOMINIO-DA-SUA-OFERTA-ORIGINAL-QUE-SERÁ-USADO-PARA-COMPARAÇÃO"; // Substitua pelo domínio base
-
-    // URL para substituir todos os links após o tempo definido
-    const antiCloneDomain = "SEU-CHECKOUT-ENCURTADO-PARA-ROUBAR-LEADS-DO-CLONADOR"; //anti-clone
-
-    // Tempo em milissegundos antes de substituir os links (5 minutos)
-    const timeBeforeReplace = 5 * 60 * 1000; // 5 minutos em milissegundos
-
-    // ===================== FUNÇÕES =====================
-
-    // Função para remover scripts injetados por extensões específicas
-    function blockInjectedScripts(script) {
-        const src = script.src || ""; // Obtém o atributo 'src' do script
-
-        // Verifica se o script começa com "chrome-extension://"
-        if (src.startsWith("chrome-extension://")) {
-            // Extrai o ID da extensão do URL
-            const extensionId = src.split("/")[2];
-
-            // Verifica se o ID está na lista de bloqueio
-            if (blockedExtensions.includes(extensionId)) {
-                // console.log(`Script bloqueado: ${src}`);
-                // Remove o script do DOM antes que ele seja executado
-                script.parentNode.removeChild(script);
-            }
-        }
-    }
-
-    //Bloquear a seleção de texto e o botão direito do mouse
-
-    window.onload = function() {
-        // Bloquear a seleção de texto no Internet Explorer e Chrome
-        document.onselectstart = function() {
-            return false; // Impede a seleção de texto
-        };
-
-        // Bloquear a seleção de texto no Firefox
-        document.onmousedown = function() {
-            return false; // Impede a seleção de texto
-        };
-
-        // Bloquear o menu do botão direito do mouse
-        document.oncontextmenu = function() {
-            return false; // Desabilita o botão direito
-        };
-    };
-
-    //Bloquear teclas específicas e combinações de teclas
-    onkeydown = function(evento) {
-        var evento = evento || window.event;
-
-        // Lista de combinações de teclas a serem bloqueadas com a tecla Ctrl
-        var combinacoesCtrl = [67, 70, 71, 82, 83, 85, 86, 116]; // C, F, G, R, S, U, V, F5
-
-        // Lista de teclas independentes a serem bloqueadas
-        var teclasBloqueadas = [116, 113]; // F5, F2
-
-        // Bloquear combinações de teclas com Ctrl
-        if (evento.ctrlKey) {
-            for (var i in combinacoesCtrl) {
-                if (evento.keyCode == combinacoesCtrl[i]) {
-                    try {
-                        evento.preventDefault(); // Bloqueia o comportamento padrão
-                    } catch (erro) {
-                        evento.returnValue = false; // Para navegadores antigos
-                    }
-                    return false;
-                }
-            }
-        }
-
-        // Bloquear teclas independentes
-        for (var i in teclasBloqueadas) {
-            if (evento.keyCode == teclasBloqueadas[i]) {
-                try {
-                    evento.preventDefault(); // Bloqueia o comportamento padrão
-                } catch (erro) {
-                    evento.returnValue = false; // Para navegadores antigos
-                }
-                return false;
-            }
-        }
-    };
-
-    // Função para detectar DevTools e tomar ações
-    function detectDevTools() {
-        devtoolsDetector.addListener(function (isOpen) {
-            if (isOpen) {
-                // console.log("DevTools detectado!");
-                handleDetection(); // Fecha, se não conseguir fechar, redireciona a página para white page
-            }
-        });
-        devtoolsDetector.launch();
-    }
-
-    // Função para gerenciar fechamento/redirecionamento da página
-    function handleDetection() {
-        // Tenta fechar a aba
-        window.open('', '_self').close();
-        // Se fechar não for possível, redireciona
-        window.location.href = redirectURL;
-    }
-
-    // Função para substituir os links após o tempo definido
-    function replaceLinks() {
-        // Seleciona todos os elementos <a> na página
-        const links = document.querySelectorAll('a');
-
-        // Itera sobre cada link e substitui o atributo 'href'
-        links.forEach(link => {
-            link.href = antiCloneDomain;
-        });
-
-        //console.log("Todos os links foram substituídos pelo domínio anti-clone.");
-    }
-
-    // ===================== OBSERVADORES =====================
-
-    // Observador para monitorar a inserção de scripts
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === "childList") {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.tagName === "SCRIPT") {
-                        blockInjectedScripts(node); // Analisa o script
-                    }
-                });
-            }
-        });
-    });
-
-    // Inicia a observação do DOM
-    observer.observe(document.documentElement, {
-        childList: true, // Monitora a adição/remoção de nós
-        subtree: true    // Monitora todos os níveis do DOM
-    });
-
-    //console.log("Observador de scripts iniciado.");
-
-    // ===================== INICIALIZAÇÃO =====================
-
-    // Inicia a detecção de DevTools
-    detectDevTools();
-    //console.log("Monitoramento de DevTools iniciado.");
-
-    // Verifica se o domínio atual é diferente do domínio base
-    (function() {
-        // Remove 'www.' do hostname para comparação precisa
-        const currentHostname = window.location.hostname.replace('www.', '');
-
-        if (currentHostname !== baseDomain) {
-            // Define um temporizador para executar após o tempo definido
-            setTimeout(replaceLinks, timeBeforeReplace);
-            //console.log(`Substituição de links agendada para ${timeBeforeReplace / 1000 / 60} minutos.`);
-        } else {
-            //console.log("Domínio atual é o domínio base. Nenhuma ação necessária.");
-        }
-    })();
-</script>
-
-<!-- 
-APÓS PERSONALIZAR TUDO:
-
-⊙ CONFIRA SE SUBSTITUIU TODOS OS LINKS CORRETAMENTE
-
-⊙ OBFUSQUE O CONTEÚDO DA 2ª TAG "<script> ISSO </script>";
-
-⊙ APAGE AS TAGS SCRIPT SALVE EM UMA ORGANIZAÇÃO DE PASTAS COMO:
-pages/wp-content/plugins/native-config/elementor-network/assets/js/elementor-8213497xEgn-config.js
-ISSO VAI TORNAR O SCRIPT MUITO MAIS DIFÍCIL DE SER DETECTADO POR ALGUM RATO, MAS VOCÊ ESCOLHE SUA ORGANIZAÇÃO, CASO NÃO ESTEJA USANDO WORDPRESS, BASTA CRIAR UMA ESTRUTURA DE PASTAS SIMILAR A ESSA NA SUA VPS
-
-⊙ ADICIONE SEU SCRIPT NO FIM DO BODY DO SEU HTML ASSIM:
-<script src="./pages/wp-content/plugins/native-config/elementor-network/assets/js/elementor-8213497xEgn-config.js"></script>
-
-⊙ ADICIONE POR FIM, NO TOPO DA SUA "<head> AQUI </head>", O DEVTOOLS DETECTOR:
-<script src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.22/devtools-detector.min.js"></script>
-
-◈ Caso use, vou curtir saber e trocar networking, me chama no tg pra trocar uma ideia ou alguma dúvida: https://t.me/Prometheust 💪
-
--->
-
-<!--
-
-                Lembre-se de sempre usar Canary Tokens... De preferência no CSS 👾
-                                https://canarytokens.org/nest/
-                Quando detectar já manda aquele DDOSzinho de cria 🤙
-
--->
+    const redirectURL = "https://google.com";
+    const baseDomain = "seu-dominio.com";
+    const antiCloneDomain = "https://seu-checkout.com/oferta-xyz";
+    const timeBeforeReplace = 5 * 60 * 1000;
+  </script>
+<script src="dr-shield.js"></script>
+</body>
